@@ -5,4 +5,8 @@ venv/
 # Python cache files
 __pycache__/
 *.pyc
+# Exclude virtual environment directories
+/bin/
+/lib/
+/pyvenv.cfg
 
