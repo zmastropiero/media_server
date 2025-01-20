@@ -54,7 +54,7 @@ def media_server():
                 if transferred_to_homeServer == 0:
                     print(f"Download {base_path} through LFTP")
                     connections.run_lftp("seedbox", path_type, base_path)
-                    rpcxml.set_custom_comment_open(rpc, hash)
+                    rpcxml.set_custom_comment_close(rpc, hash)
                 if transferred_to_homeServer == 1 and delete_flag == 1:
                     print(f"Delete {base_path} from seedbox")
                     rpcxml.delete_torrent(rpc, hash)
