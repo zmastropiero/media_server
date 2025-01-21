@@ -128,7 +128,7 @@ def run_lftp(
         remote_path_simple = remote_path.replace("/home22/krandlehandle/", "/")
     if path_type == "directory":
         command_type = "mirror"
-        options = "--parallel=4 --verbose --continue"
+        options = "--c --parallel=10 --use-pget-n=10"
     else:
         command_type = "pget"
         options = "-n 4"
