@@ -138,6 +138,9 @@ def run_lftp(
                 set net:max-retries 3;
                 set net:reconnect-interval-multiplier 1;
                 set net:reconnect-interval-base 5;
+                set ftp:ssl-allow no;
+                set dns:cache-expire 1h;
+                set ftp:passive-mode off;
                 open -u {lftUserName},{lftPassword} {lftpAddress}
                 lcd {local_path}
                 {command_type} {options or ""} {remote_path_simple}
