@@ -146,16 +146,26 @@ def run_lftp(
                 {command_type} {options or ""} {remote_path_simple}
                 bye
                 """
-    try:
-        result = subprocess.run(
-            ["lftp", "-d", "-c", lftp_script],
-            text=True,
-            capture_output=True,
-            check=True,
-        )
-        print("LFTP command executed successfully.")
-        print(result.stdout)
-    except subprocess.CalledProcessError as e:
-        print("Error executing lftp command.")
-        print(e.stderr)
-        raise
+     try:
+            # Use subprocess.Popen to capture real-time output
+            process = subprocess.Popen(
+                ["lftp", "-d", "-c", lftp_script],
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+    
+            # Stream stdout and stderr to console in real-time
+            for line in process.stdout:
+                print(line, end='')
+    
+            for line in process.stderr:
+                print(line, end='', file=sys.stderr)
+    
+            process.wait()  # Wait for process to complete
+            if process.returncode == 0:
+                print("LFTP command executed successfully.")
+            else:
+                print(f"LFTP command failed with return code {process.returncode}.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
