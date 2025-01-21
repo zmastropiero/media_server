@@ -148,7 +148,7 @@ def run_lftp(
                 """
     try:
         result = subprocess.run(
-            ["lftp", "-c", lftp_script],
+            ["lftp", "-d", "-c", lftp_script],
             text=True,
             capture_output=True,
             check=True,
