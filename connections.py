@@ -61,7 +61,7 @@ def create_ssh_tunnel() -> Generator[None, Any, None]:
             key_filename=sshKey)
 
         # log errors
-        paramiko.util.log_to_file("paramiko.log")
+        # paramiko.util.log_to_file("paramiko.log")
 
         # Create the tunnel
         transport = ssh.get_transport()
