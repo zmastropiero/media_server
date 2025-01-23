@@ -13,7 +13,7 @@ def load_config(config_path="config.yaml"):
         config = yaml.safe_load(file)
 
     # Get the active environment
-    env = os.getenv("ENVIRONMENT", config.get("environment", "dev"))
+    env = os.getenv("ENVIRONMENT")
 
     env_config = {**config.get("base", {}), **config[env]}
 
