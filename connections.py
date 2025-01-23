@@ -5,28 +5,50 @@ import xmlrpc.client
 from urllib.parse import quote
 import os
 import subprocess
-from dotenv import load_dotenv
+import yaml
 
-load_dotenv()
 
-seedBoxUserName = "krandlehandle"
-seedBoxAddress = "ant.seedhost.eu"
-seedBoxsshKey = os.path.expanduser("~/.ssh/id_rsa")
+def load_config(config_path="config.yaml"):
+    with open(config_path, "r") as file:
+        config = yaml.safe_load(file)
+
+    # Get the active environment
+    env = os.getenv("ENVIRONMENT", config.get("environment", "dev"))
+
+    env_config = {**config.get("base", {}), **config[env]}
+
+    # Resolve environment variable
+    env_config["rtorrent_password"] = os.getenv("RTORRENT_PASSWORD")
+
+    return env_config
+
+
+config = load_config()
+
+seedBoxUserName = config["seedbox_username"]
+seedBoxAddress = config["seedbox_address"]
+seedBoxsshKey = config["home"] + config["ssh_key"]
+seedBoxPassword = config["rtorrent_password"]
+seedboxRootPath = config["seedbox_root_path"]
+
+remoteHost = config["rtorrent_remote_host"]
+rtorrentXMLPort = config["rtorrent_xml_port"]
+rtorrentUsername = config["rtorrent_username"]
+rtorrentAddress = seedBoxAddress
+rtorrentPassword = seedBoxPassword
+
+mediaServerRootPath = config["file_server"]
+mediaServerDropZone = mediaServerRootPath + config["dropzone"]
 
 
 @contextmanager
-def create_ssh_tunnel(
-    taget: str,
-    remoteHost: str,
-    port: int,
-) -> Generator[None, Any, None]:
+def create_ssh_tunnel() -> Generator[None, Any, None]:
 
     # Create an SSH tunnel using paramiko and bind it to a local port.
-
-    if taget == "seedbox":
-        sshHost = seedBoxAddress
-        sshUsername = seedBoxUserName
-        sshKey = seedBoxsshKey
+    sshHost = seedBoxAddress
+    sshUsername = seedBoxUserName
+    sshKey = seedBoxsshKey
+    port = rtorrentXMLPort
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -55,10 +77,7 @@ def create_ssh_tunnel(
         print("SSH tunnel closed.")
 
 
-def connect_to_rtorrent(
-        rtorrentUsername: str,
-        rtorrentAddress: str
-):
+def connect_to_rtorrent():
     """
     Connect to the rTorrent XML-RPC interface via the SSH tunnel.
     """
@@ -87,10 +106,11 @@ def execute_command_over_ssh(
     target: str,
     command: str
 ) -> str:
-    if target == "seedbox":
-        sshHost = seedBoxAddress
-        sshUsername = seedBoxUserName
-        sshKey = seedBoxsshKey
+
+    sshHost = seedBoxAddress
+    sshUsername = seedBoxUserName
+    sshKey = seedBoxsshKey
+
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
@@ -123,9 +143,9 @@ def run_lftp(
     if target == "seedbox":
         lftpAddress = seedBoxAddress
         lftUserName = seedBoxUserName
-        lftPassword = os.getenv("RTORRENT_PASSWORD")
-        local_path = "/Volumes/krandle_handle/dropbox/"
-        remote_path_simple = remote_path.replace("/home22/krandlehandle/", "/")
+        lftPassword = seedBoxPassword
+        local_path = mediaServerDropZone
+        remote_path_simple = remote_path.replace(seedboxRootPath, "")
     if path_type == "directory":
         command_type = "mirror"
         options = "--c --parallel=10 --use-pget-n=10"
