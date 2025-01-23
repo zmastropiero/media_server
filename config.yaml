@@ -7,9 +7,10 @@ base:
   rtorrent_username: "krandlehandle"
   rtorrent_password: "!ENV RTORRENT_PASSWORD"
   rtorrent_remote_host: "127.0.0.1"
-  rtorrent_xml_port: "5060"
-  dropzone: "dropbox"
+  rtorrent_xml_port: 5060
+  dropzone: "/dropbox"
   seedbox_root_path: "/home22/krandlehandle"
+  seedbox_downloads_path: "/home22/krandlehandle/downloads_incomplete"
 
 
 dev:

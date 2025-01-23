@@ -40,9 +40,14 @@ def media_server():
             if completed_flag == 1:
                 print(transferred_to_homeServer)
                 if transferred_to_homeServer == 0:
-                    print(f"Download {base_path} through LFTP")
-                    connections.run_lftp("seedbox", path_type, base_path)
-                    rpcxml.set_custom_comment_close(rpc, hash)
+                    # print(f"Download {base_path} through LFTP")
+                    # connections.run_lftp("seedbox", path_type, base_path)
+                    print(f"Download {base_path} through rsync")
+                    rsyncResult = connections.run_rsync(base_path)
+                    if rsyncResult == 0:
+                        rpcxml.set_custom_comment_close(rpc, hash)
+                    else:
+                        break
                 if transferred_to_homeServer == 1 and delete_flag == 1:
                     print(f"Delete {base_path} from seedbox")
                     rpcxml.delete_torrent(rpc, hash)

@@ -21,7 +21,7 @@ def load_config(config_path="config.yaml"):
     env_config["rtorrent_password"] = os.getenv("RTORRENT_PASSWORD")
 
     print(f"Environment: {env}")
-    print(f"SSH Key Path: {os.path.join(env_config['home'], 
+    print(f"SSH Key Path: {os.path.join(env_config['home'],
                                         env_config['ssh_key'].lstrip('/'))}")
 
     return env_config
@@ -152,7 +152,7 @@ def run_lftp(
         remote_path_simple = remote_path.replace(seedboxRootPath, "")
     if path_type == "directory":
         command_type = "mirror"
-        options = "--c --parallel=10 --use-pget-n=10"
+        options = "--c --parallel=5 --use-pget-n=10"
     else:
         command_type = "pget"
         options = "-n 4"
@@ -183,3 +183,20 @@ def run_lftp(
         print("Error executing lftp command.")
         print(e.stderr)
         raise
+
+
+def run_rsync(remote_path):
+    source = seedBoxUserName+"@"+seedBoxAddress+":"+remote_path
+    local_path = mediaServerDropZone
+    rsync_command = ["rsync", "rsync -aP", source, local_path]
+    try:
+        result = subprocess.run(rsync_command, check=True,
+                                capture_output=True, text=True)
+        print("Rsync successful!")
+        print("Output:", result.stdout)
+        return 0
+    except subprocess.CalledProcessError as e:
+        print("Rsync failed:", e)
+        print("Error output:", e.stderr)
+        return 1
+    
