@@ -1,7 +1,3 @@
-# config.yaml
-
-environment: dev  # Switch between "dev" and "prod"
-
 base:
   project_root: "/Projects/media_server"
   logs_folder: "logs"
@@ -14,6 +10,8 @@ base:
   rtorrent_xml_port: "5060"
   dropzone: "dropbox"
   seedbox_root_path: "/home22/krandlehandle"
+
+
 dev:
   host: "localhost"
   user: "krandle"
