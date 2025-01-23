@@ -5,21 +5,9 @@ import time
 
 def media_server():
 
-    seedBoxUserName = "krandlehandle"
-    seedBoxAddress = "ant.seedhost.eu"
-    rtorrentXMLPort = 5060
-    remoteHost = "127.0.0.1"
-
-    with connections.create_ssh_tunnel(
-        "seedbox",
-        remoteHost,
-        rtorrentXMLPort
-    ):
+    with connections.create_ssh_tunnel():
         print("Tunnel is active. You can connect to rTorrent now!")
-        rpc = connections.connect_to_rtorrent(
-            seedBoxUserName,
-            seedBoxAddress
-        )
+        rpc = connections.connect_to_rtorrent()
         apiOutput = rpcxml.make_call(rpc)
         apiOutputArray = apiOutput[0]
         apiOutputCount = apiOutput[1]
