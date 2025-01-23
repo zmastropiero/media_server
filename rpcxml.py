@@ -87,7 +87,7 @@ def get_file_details(base_path, ratio):
     path_type = connections.execute_command_over_ssh("seedbox", command)
     create_date = int(create_date.strip())
     current_date = int(time.time())
-    age = current_date - create_date
+    age = create_date - current_date
     if age > 950400 or ratio > 1:
         delete_flag = 1
     else:
