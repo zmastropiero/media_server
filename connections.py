@@ -188,7 +188,7 @@ def run_lftp(
 def run_rsync(remote_path):
     source = seedBoxUserName+"@"+seedBoxAddress+":"+remote_path
     local_path = mediaServerDropZone
-    rsync_command = ["rsync", "rsync -aP", source, local_path]
+    rsync_command = ["rsync", "-aP", source, local_path]
     try:
         result = subprocess.run(rsync_command, check=True,
                                 capture_output=True, text=True)
