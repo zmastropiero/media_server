@@ -20,6 +20,10 @@ def load_config(config_path="config.yaml"):
     # Resolve environment variable
     env_config["rtorrent_password"] = os.getenv("RTORRENT_PASSWORD")
 
+    print(f"Environment: {env}")
+    print(f"SSH Key Path: {os.path.join(env_config['home'], 
+                                        env_config['ssh_key'].lstrip('/'))}")
+
     return env_config
 
 
