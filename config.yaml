@@ -1,29 +1,22 @@
 base:
   project_root: "/Projects/media_server"
   logs_folder: "logs"
-  seedbox_address: "ant.seedhost.eu"
-  seedbox_username: "krandlehandle"
-  ssh_key: "/.ssh/id_rsa"
-  rtorrent_username: "krandlehandle"
-  rtorrent_password: "!ENV RTORRENT_PASSWORD"
-  rtorrent_remote_host: "127.0.0.1"
-  rtorrent_xml_port: 5060
-  dropzone: "/dropbox"
-  seedbox_root_path: "/home22/krandlehandle"
-  seedbox_downloads_path: "/home22/krandlehandle/downloads_incomplete"
+  
+  qbitorrent_host: "http://localhost:9091"
+  qbitorrent_username: "krandle"
+  qbitorrent_password: !ENV QBITORRENT_PASSWORD
+  qbitorrent_port: 9091
 
+  torrentfiles: "/torrentfiles"
+  completed: "/completed"
+  dropbox: "/dropbox"
 
 dev:
-  host: "localhost"
   user: "krandle"
   home: "/Users/krandle"
   file_server: "/Users/krandle/krandle_handle_dev"
 
-
 prod:
-  host: "192.168.0.69"
   user: "kr"
   home: "/Users/kr"
   file_server: "/Volumes/krandle_handle"
-
-

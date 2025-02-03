@@ -1,0 +1,59 @@
+2025-02-02 23:38:28 - DEBUG - Re-initializing context...
+2025-02-02 23:38:28 - DEBUG - Parsed user URL: ParseResult(scheme='http', netloc='localhost:9091', path='', params='', query='', fragment='')
+2025-02-02 23:38:28 - DEBUG - Detecting scheme for URL...
+2025-02-02 23:38:28 - DEBUG - Starting new HTTP connection (1): localhost:9091
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "HEAD / HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - Using HTTP scheme
+2025-02-02 23:38:28 - DEBUG - Base URL: http://localhost:9091/
+2025-02-02 23:38:28 - DEBUG - Starting new HTTP connection (1): localhost:9091
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/auth/login HTTP/1.1" 200 3
+2025-02-02 23:38:28 - DEBUG - Login successful
+2025-02-02 23:38:28 - DEBUG - Successfully connected to qBittorrent!
+2025-02-02 23:38:28 - DEBUG - Scanning for torrent files in /Users/krandle/krandle_handle_dev/torrentfiles
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'music'>
+2025-02-02 23:38:28 - INFO - .torrent file found:/Users/krandle/krandle_handle_dev/torrentfiles/music/Phish - Summer Tour 2015 [FLAC]IPT [IPT].torrent
+2025-02-02 23:38:28 - INFO - .torrent file found:/Users/krandle/krandle_handle_dev/torrentfiles/music/Phish - DVDs Volume 2 [mp4]IPT [IPT].torrent
+2025-02-02 23:38:28 - INFO - .torrent file found:/Users/krandle/krandle_handle_dev/torrentfiles/music/checkmyip.torrentprivacy.com-b36d56a95c9ea621e4b91cab0e8c89b5.torrent
+2025-02-02 23:38:28 - WARNING - Non-Directory in /Users/krandle/krandle_handle_dev/torrentfiles : <DirEntry '.DS_Store'>
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'television'>
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'audiobooks'>
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'books'>
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'movies'>
+2025-02-02 23:38:28 - INFO - .torrent file found:/Users/krandle/krandle_handle_dev/torrentfiles/movies/Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.torrent
+2025-02-02 23:38:28 - DEBUG - Entering directory <DirEntry 'theboys'>
+2025-02-02 23:38:28 - INFO - Adding torrent: /Users/krandle/krandle_handle_dev/torrentfiles/music/Phish - Summer Tour 2015 [FLAC]IPT [IPT].torrent to category music
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/add HTTP/1.1" 200 3
+2025-02-02 23:38:28 - INFO - Adding torrent: /Users/krandle/krandle_handle_dev/torrentfiles/music/Phish - DVDs Volume 2 [mp4]IPT [IPT].torrent to category music
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/add HTTP/1.1" 200 3
+2025-02-02 23:38:28 - INFO - Adding torrent: /Users/krandle/krandle_handle_dev/torrentfiles/music/checkmyip.torrentprivacy.com-b36d56a95c9ea621e4b91cab0e8c89b5.torrent to category music
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/add HTTP/1.1" 200 3
+2025-02-02 23:38:28 - INFO - Adding torrent: /Users/krandle/krandle_handle_dev/torrentfiles/movies/Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT.torrent to category movies
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/add HTTP/1.1" 200 3
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/info HTTP/1.1" 200 1192
+2025-02-02 23:38:28 - DEBUG - This file has a moved value of 0 and a hit and run value of 0
+2025-02-02 23:38:28 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is currently a hit and run
+2025-02-02 23:38:28 - INFO - Adding hit and run tag to Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - This file has a moved value of 0 and a hit and run value of 0
+2025-02-02 23:38:28 - DEBUG - Phish - DVDs Volume 2 [mp4] is currently a hit and run
+2025-02-02 23:38:28 - INFO - Adding hit and run tag to Phish - DVDs Volume 2 [mp4]
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - This file has a moved value of 0 and a hit and run value of 0
+2025-02-02 23:38:28 - DEBUG - Phish - Summer Tour 2015 [FLAC] is currently a hit and run
+2025-02-02 23:38:28 - INFO - Adding hit and run tag to Phish - Summer Tour 2015 [FLAC]
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - This file has a moved value of 0 and a hit and run value of 0
+2025-02-02 23:38:28 - DEBUG - checkmyip.torrentprivacy.com-b36d56a95c9ea621e4b91cab0e8c89b5 is currently a hit and run
+2025-02-02 23:38:28 - INFO - Adding hit and run tag to checkmyip.torrentprivacy.com-b36d56a95c9ea621e4b91cab0e8c89b5
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/app/version HTTP/1.1" 200 6
+2025-02-02 23:38:28 - DEBUG - http://localhost:9091 "POST /api/v2/auth/logout HTTP/1.1" 200 0
+2025-02-02 23:38:28 - DEBUG - Logged out from qBittorrent.
