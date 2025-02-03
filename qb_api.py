@@ -11,7 +11,7 @@ import logging
 # Configure logging
 logging.basicConfig(
     filename="torrent_downloader.log",  # Log file name
-    level=logging.DEBUG,  # Log level (INFO, DEBUG, ERROR, etc.)
+    level=logging.INFO,  # Log level (INFO, DEBUG, ERROR, etc.)
     format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
     datefmt="%Y-%m-%d %H:%M:%S"  # Date format
 )
