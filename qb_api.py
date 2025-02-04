@@ -145,7 +145,7 @@ def resolve_env_variables(yaml_content):
     return env_pattern.sub(env_replacer, yaml_content)
 
 
-def load_config(config_path="config.yaml"):
+def load_config(config_path="/src/config.yaml"):
     with open(config_path, "r") as file:
         yaml_content = file.read()
 
