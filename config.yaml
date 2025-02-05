@@ -10,8 +10,7 @@ base:
   torrentfiles: "/torrentfiles"
   completed: "/completed"
   dropbox: "/dropbox"
-
-  
+    
 dev:
   user: "krandle"
   home: "/Users/krandle"
@@ -19,11 +18,13 @@ dev:
   torrentfiles: "/Users/krandle/krandle_handle_dev/torrentfiles"
   completed: "/Users/krandle/krandle_handle_dev/completed"
   dropbox: "/Users/krandle/krandle_handle_dev/dropbox"
+  log: "/User/krandle/krandle_handle_dev/torrent_downloader.log"
 
 prod:
   user: "kr"
   home: "/Users/kr"
   file_server: "/Volumes/krandle_handle"
   torrentfiles: "/Volumes/krandle_handle/torrentfiles"
-  completed: "/Volumes/krandle_handlecompleted"
+  completed: "/Volumes/krandle_handle/completed"
   dropbox: "/downloads"
+  log: "/Volumes/krandle_handle/torrent_downloader.log"

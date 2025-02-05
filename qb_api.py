@@ -11,7 +11,7 @@ import logging
 # Configure logging
 logging.basicConfig(
     filename="torrent_downloader.log",  # Log file name
-    level=logging.INFO,  # Log level (INFO, DEBUG, ERROR, etc.)
+    level=logging.DEBUG,  # Log level (INFO, DEBUG, ERROR, etc.)
     format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
     datefmt="%Y-%m-%d %H:%M:%S"  # Date format
 )
@@ -145,7 +145,7 @@ def resolve_env_variables(yaml_content):
     return env_pattern.sub(env_replacer, yaml_content)
 
 
-def load_config(config_path="/src/config.yaml"):
+def load_config(config_path="config.yaml"):
     with open(config_path, "r") as file:
         yaml_content = file.read()
 
@@ -164,13 +164,14 @@ def load_config(config_path="/src/config.yaml"):
 
     configDict = {
         "env": env,
-        "torrentFiles": env_config["file_server"] + env_config["torrentfiles"],
-        "savePath": env_config["file_server"] + env_config["dropbox"],
+        "torrentFiles": env_config["torrentfiles"],
+        "savePath": env_config["dropbox"],
         "qbitorrentHost": env_config["qbitorrent_host"],
         "qbitorrentUsername": env_config["qbitorrent_username"],
         "qbitorrentPassword": env_config["qbitorrent_password"],
         "qbitorrentPort": env_config["qbitorrent_port"],
-        "completedFolder": env_config["file_server"]+env_config["completed"],
+        "completedFolder": env_config["completed"],
+        "log": env_config["log"],
     }
     return configDict
 
