@@ -11,7 +11,7 @@ import logging
 # Configure logging
 logging.basicConfig(
     filename="torrent_downloader.log",  # Log file name
-    level=logging.INFO,  # Log level (INFO, DEBUG, ERROR, etc.)
+    level=logging.DEBUG,  # Log level (INFO, DEBUG, ERROR, etc.)
     format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
     datefmt="%Y-%m-%d %H:%M:%S"  # Date format
 )
@@ -64,7 +64,7 @@ class QBittorrentManager:
                         forced=True
                         )
                 logging.info(f"API Response: {add}")
-                if add == "Ok":
+                if add == "Ok.":
                     logging.info(f"Deleting torrent file: "
                                  f"{torrentDownload[0]}")
                     file_system.delete_by_path(torrentDownload[0])
@@ -211,7 +211,7 @@ if __name__ == "__main__":
             # Check for and download new torrents
             queue_list = file_system.torrent_download_queue(
                 configDict["torrentFiles"])
-            qbt_manager.download_new_torrents(
+            downloaded_torrents = qbt_manager.download_new_torrents(
                 queue_list, configDict["savePath"])
 
             currentTorrents = qbt_manager.current_torrents()
