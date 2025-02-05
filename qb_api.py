@@ -229,6 +229,8 @@ if __name__ == "__main__":
                     sourcePath = torrent["path"]
                     destinationPath = (configDict["completedFolder"])
                     category = torrent["category"]
+                    # We need to get the real path to the torrent here....
+                    # /downloads works for saving but not for file system moves
                     logging.info(f"Finished torrent {torrentName}\n"
                                  f" Copying from {sourcePath}\n"
                                  f" to {destinationPath} : {category}")
