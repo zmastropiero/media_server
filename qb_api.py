@@ -166,6 +166,7 @@ def load_config(config_path="config.yaml"):
         "env": env,
         "torrentFiles": env_config["torrentfiles"],
         "savePath": env_config["dropbox"],
+        "savePathActual": env_config["dropboxactual"],
         "qbitorrentHost": env_config["qbitorrent_host"],
         "qbitorrentUsername": env_config["qbitorrent_username"],
         "qbitorrentPassword": env_config["qbitorrent_password"],
@@ -227,6 +228,7 @@ if __name__ == "__main__":
                 # move completed torrents
                 if torrent["status"] == "finished" and movedTag == 0:
                     sourcePath = torrent["path"]
+                    sourcePathActual = configDict["savePathActual"]
                     destinationPath = (configDict["completedFolder"])
                     category = torrent["category"]
                     # We need to get the real path to the torrent here....
@@ -237,6 +239,7 @@ if __name__ == "__main__":
                     try:
                         file_system.move_completed(
                             sourcePath,
+                            sourcePathActual,
                             destinationPath,
                             category
                             )

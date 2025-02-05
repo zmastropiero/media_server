@@ -35,7 +35,8 @@ def delete_by_path(file_path):
         logging.warning(f"File '{file_path}' not found.")
 
 
-def move_completed(sourcePath: str, sourcePathActual: str, completedPath, category):
+def move_completed(sourcePath: str, sourcePathActual: str,
+                   completedPath, category):
     """
     soucePath - a completed download file or directory
     completedPath - location of completed torrent
