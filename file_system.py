@@ -35,12 +35,13 @@ def delete_by_path(file_path):
         logging.warning(f"File '{file_path}' not found.")
 
 
-def move_completed(sourcePath, completedPath, category):
+def move_completed(sourcePath: str, sourcePathActual: str, completedPath, category):
     """
     soucePath - a completed download file or directory
     completedPath - location of completed torrent
     category - category in app & folder within completed path to store torrent
     """
+    sourcePath = sourcePath.replace("/downloads/", sourcePathActual)
     destinationDir = completedPath+"/"+category
     if not os.path.exists(destinationDir):
         logging.warning(f"No folder for category {category}"
