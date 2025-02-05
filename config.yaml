@@ -2,10 +2,10 @@ base:
   project_root: "/Projects/media_server"
   logs_folder: "logs"
   
-  qbitorrent_host: "http://localhost:9091"
+  qbitorrent_host: "http://localhost:8080"
   qbitorrent_username: "krandle"
   qbitorrent_password: !ENV QBITORRENT_PASSWORD
-  qbitorrent_port: 9091
+  qbitorrent_port: 8080
 
   torrentfiles: "/torrentfiles"
   completed: "/completed"
@@ -16,8 +16,14 @@ dev:
   user: "krandle"
   home: "/Users/krandle"
   file_server: "/Users/krandle/krandle_handle_dev"
+  torrentfiles: "/Users/krandle/krandle_handle_dev/torrentfiles"
+  completed: "/Users/krandle/krandle_handle_dev/completed"
+  dropbox: "/Users/krandle/krandle_handle_dev/dropbox"
 
 prod:
   user: "kr"
   home: "/Users/kr"
   file_server: "/Volumes/krandle_handle"
+  torrentfiles: "/Volumes/krandle_handle/torrentfiles"
+  completed: "/Volumes/krandle_handlecompleted"
+  dropbox: "/downloads"
