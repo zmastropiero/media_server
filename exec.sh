@@ -1,12 +1,10 @@
 #!/bin/bash
 
-# Activate the virtual environment
-source ~/Projects/media_server/venv/bin/activate
 
 # Infinite loop to restart the script if it exits
 while true; do
     echo "Starting media_server.py..."
-    python3 /Users/kr/Projects/media_server/src/qb_api.py
+    python3 /Users/kr/Projects/media_server/qb_api.py
     echo "media_server.py exited. Restarting in 5 seconds..."
     sleep 30
 done

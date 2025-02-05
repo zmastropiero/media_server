@@ -348,3 +348,153 @@
 2025-02-04 19:41:55 - DEBUG - http://localhost:8080 "POST /api/v2/app/version HTTP/1.1" 200 6
 2025-02-04 19:41:55 - DEBUG - http://localhost:8080 "POST /api/v2/auth/logout HTTP/1.1" 200 0
 2025-02-04 19:41:55 - DEBUG - Logged out from qBittorrent.
+2025-02-04 19:50:34 - DEBUG - Re-initializing context...
+2025-02-04 19:50:34 - DEBUG - Parsed user URL: ParseResult(scheme='http', netloc='localhost:8080', path='', params='', query='', fragment='')
+2025-02-04 19:50:34 - DEBUG - Detecting scheme for URL...
+2025-02-04 19:50:34 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "HEAD / HTTP/1.1" 200 0
+2025-02-04 19:50:34 - DEBUG - Using HTTP scheme
+2025-02-04 19:50:34 - DEBUG - Base URL: http://localhost:8080/
+2025-02-04 19:50:34 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/auth/login HTTP/1.1" 200 3
+2025-02-04 19:50:34 - DEBUG - Login successful
+2025-02-04 19:50:34 - DEBUG - Successfully connected to qBittorrent!
+2025-02-04 19:50:34 - DEBUG - Scanning for torrent files in /Volumes/krandle_handle/torrentfiles
+2025-02-04 19:50:34 - DEBUG - Entering directory <DirEntry 'music'>
+2025-02-04 19:50:34 - WARNING - Non-Directory in /Volumes/krandle_handle/torrentfiles : <DirEntry '.DS_Store'>
+2025-02-04 19:50:34 - DEBUG - Entering directory <DirEntry 'television'>
+2025-02-04 19:50:34 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent
+2025-02-04 19:50:34 - DEBUG - Entering directory <DirEntry 'books'>
+2025-02-04 19:50:34 - DEBUG - Entering directory <DirEntry 'movies'>
+2025-02-04 19:50:34 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent
+2025-02-04 19:50:34 - DEBUG - Entering directory <DirEntry 'theboys'>
+2025-02-04 19:50:34 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent to category television
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:50:34 - INFO - API Response: Fails.
+2025-02-04 19:50:34 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent to category movies
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:50:34 - INFO - API Response: Fails.
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/info HTTP/1.1" 200 1505
+2025-02-04 19:50:34 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:50:34 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is currently a hit and run
+2025-02-04 19:50:34 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is accurately tagged hit and run
+2025-02-04 19:50:34 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:50:34 - INFO - Finished torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+ Copying from /downloads/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK.mkv
+ to /Volumes/krandle_handle/completed : movies
+2025-02-04 19:50:34 - INFO - Adding Moved Tag to torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-04 19:50:34 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is currently a hit and run
+2025-02-04 19:50:34 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is accurately tagged hit and run
+2025-02-04 19:50:34 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:50:34 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is currently a hit and run
+2025-02-04 19:50:34 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is accurately tagged hit and run
+2025-02-04 19:50:34 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:50:34 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is currently a hit and run
+2025-02-04 19:50:34 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is accurately tagged hit and run
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/app/version HTTP/1.1" 200 6
+2025-02-04 19:50:34 - DEBUG - http://localhost:8080 "POST /api/v2/auth/logout HTTP/1.1" 200 0
+2025-02-04 19:50:34 - DEBUG - Logged out from qBittorrent.
+2025-02-04 19:51:05 - DEBUG - Re-initializing context...
+2025-02-04 19:51:05 - DEBUG - Parsed user URL: ParseResult(scheme='http', netloc='localhost:8080', path='', params='', query='', fragment='')
+2025-02-04 19:51:05 - DEBUG - Detecting scheme for URL...
+2025-02-04 19:51:05 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "HEAD / HTTP/1.1" 200 0
+2025-02-04 19:51:05 - DEBUG - Using HTTP scheme
+2025-02-04 19:51:05 - DEBUG - Base URL: http://localhost:8080/
+2025-02-04 19:51:05 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/auth/login HTTP/1.1" 200 3
+2025-02-04 19:51:05 - DEBUG - Login successful
+2025-02-04 19:51:05 - DEBUG - Successfully connected to qBittorrent!
+2025-02-04 19:51:05 - DEBUG - Scanning for torrent files in /Volumes/krandle_handle/torrentfiles
+2025-02-04 19:51:05 - DEBUG - Entering directory <DirEntry 'music'>
+2025-02-04 19:51:05 - WARNING - Non-Directory in /Volumes/krandle_handle/torrentfiles : <DirEntry '.DS_Store'>
+2025-02-04 19:51:05 - DEBUG - Entering directory <DirEntry 'television'>
+2025-02-04 19:51:05 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent
+2025-02-04 19:51:05 - DEBUG - Entering directory <DirEntry 'books'>
+2025-02-04 19:51:05 - DEBUG - Entering directory <DirEntry 'movies'>
+2025-02-04 19:51:05 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent
+2025-02-04 19:51:05 - DEBUG - Entering directory <DirEntry 'theboys'>
+2025-02-04 19:51:05 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent to category television
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:51:05 - INFO - API Response: Fails.
+2025-02-04 19:51:05 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent to category movies
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:51:05 - INFO - API Response: Fails.
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/info HTTP/1.1" 200 1506
+2025-02-04 19:51:05 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:05 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is currently a hit and run
+2025-02-04 19:51:05 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is accurately tagged hit and run
+2025-02-04 19:51:05 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:05 - INFO - Finished torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+ Copying from /downloads/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK.mkv
+ to /Volumes/krandle_handle/completed : movies
+2025-02-04 19:51:05 - INFO - Adding Moved Tag to torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-04 19:51:05 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is currently a hit and run
+2025-02-04 19:51:05 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is accurately tagged hit and run
+2025-02-04 19:51:05 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:05 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is currently a hit and run
+2025-02-04 19:51:05 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is accurately tagged hit and run
+2025-02-04 19:51:05 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:05 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is currently a hit and run
+2025-02-04 19:51:05 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is accurately tagged hit and run
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/app/version HTTP/1.1" 200 6
+2025-02-04 19:51:05 - DEBUG - http://localhost:8080 "POST /api/v2/auth/logout HTTP/1.1" 200 0
+2025-02-04 19:51:05 - DEBUG - Logged out from qBittorrent.
+2025-02-04 19:51:35 - DEBUG - Re-initializing context...
+2025-02-04 19:51:35 - DEBUG - Parsed user URL: ParseResult(scheme='http', netloc='localhost:8080', path='', params='', query='', fragment='')
+2025-02-04 19:51:35 - DEBUG - Detecting scheme for URL...
+2025-02-04 19:51:35 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "HEAD / HTTP/1.1" 200 0
+2025-02-04 19:51:35 - DEBUG - Using HTTP scheme
+2025-02-04 19:51:35 - DEBUG - Base URL: http://localhost:8080/
+2025-02-04 19:51:35 - DEBUG - Starting new HTTP connection (1): localhost:8080
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/auth/login HTTP/1.1" 200 3
+2025-02-04 19:51:35 - DEBUG - Login successful
+2025-02-04 19:51:35 - DEBUG - Successfully connected to qBittorrent!
+2025-02-04 19:51:35 - DEBUG - Scanning for torrent files in /Volumes/krandle_handle/torrentfiles
+2025-02-04 19:51:35 - DEBUG - Entering directory <DirEntry 'music'>
+2025-02-04 19:51:35 - WARNING - Non-Directory in /Volumes/krandle_handle/torrentfiles : <DirEntry '.DS_Store'>
+2025-02-04 19:51:35 - DEBUG - Entering directory <DirEntry 'television'>
+2025-02-04 19:51:35 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent
+2025-02-04 19:51:35 - DEBUG - Entering directory <DirEntry 'books'>
+2025-02-04 19:51:35 - DEBUG - Entering directory <DirEntry 'movies'>
+2025-02-04 19:51:35 - INFO - .torrent file found:/Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent
+2025-02-04 19:51:35 - DEBUG - Entering directory <DirEntry 'theboys'>
+2025-02-04 19:51:35 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/television/Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP..torrent to category television
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:51:35 - INFO - API Response: Fails.
+2025-02-04 19:51:35 - INFO - Adding torrent: /Volumes/krandle_handle/torrentfiles/movies/Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.torrent to category movies
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/add HTTP/1.1" 200 6
+2025-02-04 19:51:35 - INFO - API Response: Fails.
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/info HTTP/1.1" 200 1502
+2025-02-04 19:51:35 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:35 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is currently a hit and run
+2025-02-04 19:51:35 - DEBUG - Whats.the.Worst.That.Could.Happen.2001.1080p.Blu-ray.REMUX.AVC.DTS-HD.MA.5.1-HiFi.mkv is accurately tagged hit and run
+2025-02-04 19:51:35 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:35 - INFO - Finished torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+ Copying from /downloads/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK/Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK.mkv
+ to /Volumes/krandle_handle/completed : movies
+2025-02-04 19:51:35 - INFO - Adding Moved Tag to torrent Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "GET /api/v2/app/webapiVersion HTTP/1.1" 200 6
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/torrents/addTags HTTP/1.1" 200 0
+2025-02-04 19:51:35 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is currently a hit and run
+2025-02-04 19:51:35 - DEBUG - Conclave.2024.REPACK.1080p.BluRay.REMUX.AVC.TrueHD.7.1-STATiK is accurately tagged hit and run
+2025-02-04 19:51:35 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:35 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is currently a hit and run
+2025-02-04 19:51:35 - DEBUG - Gotti.2018.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-FGT is accurately tagged hit and run
+2025-02-04 19:51:35 - DEBUG - This file has a moved value of 0 and a hit and run value of 1
+2025-02-04 19:51:35 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is currently a hit and run
+2025-02-04 19:51:35 - DEBUG - Mad.Men.S05.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-NOGRP  is accurately tagged hit and run
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/app/version HTTP/1.1" 200 6
+2025-02-04 19:51:35 - DEBUG - http://localhost:8080 "POST /api/v2/auth/logout HTTP/1.1" 200 0
+2025-02-04 19:51:35 - DEBUG - Logged out from qBittorrent.
