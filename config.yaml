@@ -1,32 +1,61 @@
 base:
-  project_root: "/Projects/media_server"
-  logs_folder: "logs"
+  project_root: "/usr/local/srv/dev/projects/media_server"
+  logs_folder: "/usr/local/srv/dev/logs"
   
-  qbitorrent_host: "http://localhost:8080"
-  qbitorrent_username: "krandle"
-  qbitorrent_password: !ENV QBITORRENT_PASSWORD
-  qbitorrent_port: 8080
+  qbittorrent_host: "http://localhost:8080"
+  qbittorrent_username: "krandle"
+  qbittorrent_password: !ENV QBITORRENT_PASSWORD
+  qbittorrent_port: 8080
 
-  torrentfiles: "/torrentfiles"
-  completed: "/completed"
-  dropbox: "/dropbox"
+  media_root: "/usr/local/srv/media"
+  torrentfiles: "/usr/local/srv/media/torrentfiles"
+  completed: "/usr/local/srv/media/completed"
+  dropbox: "/usr/local/srv/media/dropbox"
 
 dev:
   user: "krandle"
   home: "/Users/krandle"
-  file_server: "/Users/krandle/krandle_handle_dev"
-  torrentfiles: "/Users/krandle/krandle_handle_dev/torrentfiles"
-  completed: "/Users/krandle/krandle_handle_dev/completed"
-  dropbox: "/Users/krandle/krandle_handle_dev/dropbox"
-  dropboxactual: "/Users/krandle/krandle_handle_dev/dropbox"
-  log: "/User/krandle/krandle_handle_dev/torrent_downloader.log"
+  file_server: "/usr/local/srv/dev/storage"
+  torrentfiles: "/usr/local/srv/dev/storage/torrentfiles"
+  completed: "/usr/local/srv/dev/storage/completed"
+  dropbox: "/usr/local/srv/dev/storage/dropbox"
+  dropboxactual: "/usr/local/srv/dev/storage/dropbox"
+  log: "/usr/local/srv/dev/logs/torrent_downloader.log"
 
 prod:
   user: "kr"
   home: "/Users/kr"
-  file_server: "/Volumes/krandle_handle"
-  torrentfiles: "/Volumes/krandle_handle/torrentfiles"
-  completed: "/Volumes/krandle_handle/completed"
-  dropbox: "/downloads"
-  dropboxactual: "/Volumes/krandle_handle/dropbox/"
-  log: "/Volumes/krandle_handle/torrent_downloader.log"
+  file_server: "/usr/local/srv/dev/scripts"
+  torrentfiles: "/usr/local/srv/media/torrentfiles"
+  completed: "/usr/local/srv/media/completed"
+  dropbox: "/usr/local/srv/media/dropbox"
+  dropboxactual: "/usr/local/srv/media/dropbox"
+  log: "/usr/local/srv/dev/logs/torrent_downloader.log"
+
+docker:
+  dev:
+    torrent_app:
+      image: "binhex/arch-qbittorrentvpn"
+      container_name: "qbittorrent_dev"
+      network_mode: "bridge"
+      data_dir: "/usr/local/srv/dev/storage/dropbox"
+      config_dir: "/usr/local/srv/dev/configs/qbittorrent"
+      vpn_enabled: false  # No VPN in dev for debugging
+      ports:
+        - "8081:8080"  # Different port to avoid conflicts
+      restart_policy: "unless-stopped"
+
+  prod:
+    torrent_app:
+      image: "binhex/arch-qbittorrentvpn"
+      container_name: "qbittorrent"
+      network_mode: "bridge"
+      data_dir: "/usr/local/srv/media/dropbox"
+      config_dir: "/usr/local/srv/dev/configs/qbittorrent"
+      vpn_enabled: true
+      vpn_provider: "PIA"
+      vpn_user: !ENV VPN_USER
+      vpn_pass: !ENV VPN_PASS
+      ports:
+        - "8080:8080"
+      restart_policy: "unless-stopped"

@@ -55,7 +55,7 @@ def move_completed(sourcePath: str, sourcePathActual: str,
     if os.path.exists(sourcePath):
         if os.path.isfile(sourcePath):
             try:
-                shutil.copy2(sourcePath, destinationPath)  # Preserves metadata
+                shutil.copyfileobj(sourcePath, destinationPath, length=16*1024)
                 logging.info(f"File {sourcePath} copied successfully"
                              f"to {destinationPath}")
                 return destinationPath
@@ -66,7 +66,8 @@ def move_completed(sourcePath: str, sourcePathActual: str,
             try:
                 shutil.copytree(sourcePath,
                                 destinationPath,
-                                dirs_exist_ok=True)
+                                dirs_exist_ok=True,
+                                )
                 logging.info(f"Directory {sourcePath} copied successfully"
                              f"to {destinationPath}")
                 return destinationPath
