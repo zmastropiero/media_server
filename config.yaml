@@ -28,5 +28,5 @@ prod:
   torrentfiles: "/Volumes/krandle_handle/torrentfiles"
   completed: "/Volumes/krandle_handle/completed"
   dropbox: "/downloads"
-  dropboxActual: "/Volumes/krandle_handle/completed/"
+  dropboxactual: "/Volumes/krandle_handle/dropbox/"
   log: "/Volumes/krandle_handle/torrent_downloader.log"

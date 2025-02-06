@@ -11,3 +11,4 @@ __pycache__/
 /pyvenv.cfg
 /.env
 /.vscode/
+torrent_downloader.log
