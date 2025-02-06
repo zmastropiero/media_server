@@ -24,7 +24,7 @@ def load_config():
     if env == "dev":
         config_path = "/usr/local/srv/dev/projects/media_server/config.yaml"
     elif env == "prod":
-        config_path = "/usr/local/srv/dev/scripts/config.yaml"
+        config_path = "/usr/local/srv/dev/scripts/media_server/config.yaml"
     else:
         raise ValueError(f"Unknown environment: {env}")
 
@@ -35,28 +35,50 @@ def load_config():
     resolved_yaml = resolve_env_variables(yaml_content)
     config = yaml.safe_load(resolved_yaml)
 
-    # Merge base config with environment-specific config
-    env_config = {**config.get("base", {}), **config[env]}
-    env_config["env"] = env  # Store the active environment in the config
+    # # Merge base config with environment-specific config
+    # env_config = {**config.get("base", {}), **config[env]}
+    # env_config["env"] = env  # Store the active environment in the config
 
-    return env_config
+    return config, env
 
 
-def qbitorrent_config(env_config):
+def qbitorrent_config():
+    config, env = load_config()
+    baseConfig = {**config.get("base", {}), **config[env]}
     configDict = {
-        "env": env_config["env"],
-        "torrentFiles": env_config["torrentfiles"],
-        "savePath": env_config["dropbox"],
-        "savePathActual": env_config["dropboxactual"],
-        "qbitorrentHost": env_config["qbitorrent_host"],
-        "qbitorrentUsername": env_config["qbitorrent_username"],
-        "qbitorrentPassword": env_config["qbitorrent_password"],
-        "qbitorrentPort": env_config["qbitorrent_port"],
-        "completedFolder": env_config["completed"],
-        "log": env_config["log"],
+        "env": env,
+        "torrentFiles": baseConfig["torrentfiles"],
+        "savePath": baseConfig["dropbox"],
+        "savePathActual": baseConfig["dropboxactual"],
+        "qbitorrentHost": baseConfig["qbitorrent_host"],
+        "qbitorrentUsername": baseConfig["qbitorrent_username"],
+        "qbitorrentPassword": baseConfig["qbitorrent_password"],
+        "qbitorrentPort": baseConfig["qbitorrent_port"],
+        "completedFolder": baseConfig["completed"],
+        "log": baseConfig["log"],
     }
     return configDict
 
 
+def docker_compose_config(application):
+    config, env = load_config()
+    # Safely access the docker section and merge configurations
+    dockerConfig = config.get("docker", {}).get(env, {}).get(application, {})
+    configDict = {
+        "env": env,
+        "image": dockerConfig["image"],
+        "container_name": dockerConfig["container_name"],
+        "network_mode": dockerConfig["network_mode"],
+        "data_dir": dockerConfig["data_dir"],
+        "config_dir": dockerConfig["config_dir"],
+        "ports": dockerConfig["ports"],
+        "restart_policy": dockerConfig["restart_policy"],
+        "vpn_enabled": dockerConfig["vpn_enabled"],
+        "vpn_provider": dockerConfig["vpn_provider"],
+        "vpn_user": dockerConfig["vpn_user"],
+        "vpn_pass": dockerConfig["vpn_pass"],
+    }
+    return configDict
 
-load_config()
+# print(config["docker"]) # [env]["torrent_app"]
+# print(docker_compose_config())

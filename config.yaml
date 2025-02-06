@@ -2,10 +2,7 @@ base:
   project_root: "/usr/local/srv/dev/projects/media_server"
   logs_folder: "/usr/local/srv/dev/logs"
   
-  qbittorrent_host: "http://localhost:8080"
-  qbittorrent_username: "krandle"
-  qbittorrent_password: !ENV QBITORRENT_PASSWORD
-  qbittorrent_port: 8080
+
 
   media_root: "/usr/local/srv/media"
   torrentfiles: "/usr/local/srv/media/torrentfiles"
@@ -21,6 +18,10 @@ dev:
   dropbox: "/usr/local/srv/dev/storage/dropbox"
   dropboxactual: "/usr/local/srv/dev/storage/dropbox"
   log: "/usr/local/srv/dev/logs/torrent_downloader.log"
+  qbitorrent_host: "http://localhost:8081"
+  qbitorrent_username: "krandle"
+  qbitorrent_password: !ENV QBITORRENT_PASSWORD
+  qbitorrent_port: 8081
 
 prod:
   user: "kr"
@@ -31,6 +32,10 @@ prod:
   dropbox: "/usr/local/srv/media/dropbox"
   dropboxactual: "/usr/local/srv/media/dropbox"
   log: "/usr/local/srv/dev/logs/torrent_downloader.log"
+  qbitorrent_host: "http://localhost:8080"
+  qbitorrent_username: "krandle"
+  qbitorrent_password: !ENV QBITORRENT_PASSWORD
+  qbitorrent_port: 8080
 
 docker:
   dev:
@@ -41,6 +46,9 @@ docker:
       data_dir: "/usr/local/srv/dev/storage/dropbox"
       config_dir: "/usr/local/srv/dev/configs/qbittorrent"
       vpn_enabled: false  # No VPN in dev for debugging
+      vpn_provider: "PIA"
+      vpn_user: !ENV VPN_USER
+      vpn_pass: !ENV VPN_PASS
       ports:
         - "8081:8080"  # Different port to avoid conflicts
       restart_policy: "unless-stopped"
