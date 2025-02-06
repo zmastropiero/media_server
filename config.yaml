@@ -40,21 +40,20 @@ prod:
 docker:
   dev:
     torrent_app:
+      compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent_dev"
       network_mode: "bridge"
       data_dir: "/usr/local/srv/dev/storage/dropbox"
       config_dir: "/usr/local/srv/dev/configs/qbittorrent"
       vpn_enabled: false  # No VPN in dev for debugging
-      vpn_provider: "PIA"
-      vpn_user: !ENV VPN_USER
-      vpn_pass: !ENV VPN_PASS
       ports:
         - "8081:8080"  # Different port to avoid conflicts
       restart_policy: "unless-stopped"
 
   prod:
     torrent_app:
+      compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent"
       network_mode: "bridge"

@@ -1,6 +1,7 @@
 import os
 import re
 import yaml
+import json
 
 
 def resolve_env_variables(yaml_content):
@@ -74,11 +75,16 @@ def docker_compose_config(application):
         "ports": dockerConfig["ports"],
         "restart_policy": dockerConfig["restart_policy"],
         "vpn_enabled": dockerConfig["vpn_enabled"],
-        "vpn_provider": dockerConfig["vpn_provider"],
-        "vpn_user": dockerConfig["vpn_user"],
-        "vpn_pass": dockerConfig["vpn_pass"],
+        "compose_path": dockerConfig["compose_path"]
+        # "vpn_provider": dockerConfig["vpn_provider"],
+        # "vpn_user": dockerConfig["vpn_user"],
+        # "vpn_pass": dockerConfig["vpn_pass"],
     }
+    if env=="prod":
+        configDict["vpn_provider"] = dockerConfig["vpn_provider"]
+        configDict["vpn_user"] = dockerConfig["vpn_user"]
+        configDict["vpn_pass"] = dockerConfig["vpn_pass"]
     return configDict
 
-# print(config["docker"]) # [env]["torrent_app"]
-# print(docker_compose_config())
+
+ 

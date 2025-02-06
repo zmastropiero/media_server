@@ -1,13 +1,8 @@
 import yaml
 import os
+from env_resolver import docker_compose_config
 
-config_path = "/usr/local/srv/dev/projects/media_server/config.yaml"
-with open(config_path, "r") as f:
-    config = yaml.safe_load(f)
-
-env = os.getenv("MEDIA_SERVER_ENV", "dev")
-
-docker_config = config["docker"][env]["torrent_app"]
+docker_config = docker_compose_config("torrent_app")
 
 compose_template = f"""version: "3.9"
 services:
@@ -19,8 +14,8 @@ services:
       - VPN_ENABLED={"yes" if docker_config.get('vpn_enabled',
                                                 False) else "no"}
       - VPN_PROV={docker_config.get('vpn_provider', '')}
-      - VPN_USER={os.getenv('VPN_USER', '')}
-      - VPN_PASS={os.getenv('VPN_PASS', '')}
+      - VPN_USER={docker_config.get('vpn_user', '')}
+      - VPN_PASS={docker_config.get('vpn_pass', '')}
     volumes:
       - {docker_config['config_dir']}:/config
       - {docker_config['data_dir']}:/downloads
@@ -30,10 +25,9 @@ services:
 """
 
 # Save the file
-output_path = os.path.join(os.getenv("MEDIA_SERVER_PATH"),
-                           "docker-compose.yml")
+output_path = docker_config["compose_path"]
 with open(output_path, "w") as f:
     f.write(compose_template)
 
 print(f"Generated {output_path} successfully "
-      f"for {env} environment.")
+      f"for {docker_config['env']} environment.")
