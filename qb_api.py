@@ -6,6 +6,7 @@ import yaml
 import re
 import file_system
 import logging
+from env_resolver import load_config
 
 
 # Configure logging
