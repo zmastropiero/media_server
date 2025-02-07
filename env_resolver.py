@@ -76,7 +76,9 @@ def docker_compose_config(application):
         "ports": dockerConfig["ports"],
         "restart_policy": dockerConfig["restart_policy"],
         "vpn_enabled": dockerConfig["vpn_enabled"],
-        "compose_path": dockerConfig["compose_path"]
+        "compose_path": dockerConfig["compose_path"],
+        "service": dockerConfig["service"],
+        "network": dockerConfig["network"]
         # "vpn_provider": dockerConfig["vpn_provider"],
         # "vpn_user": dockerConfig["vpn_user"],
         # "vpn_pass": dockerConfig["vpn_pass"],

@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  qbittorrent:
+  qbittorrent_dev:
     platform: linux/arm64
     image: "binhex/arch-qbittorrentvpn"
     container_name: "qbittorrent_dev"
@@ -25,3 +25,9 @@ services:
     ports:
       - 8081:8081
     restart: unless-stopped
+    networks:
+      - qbittorrent_dev_net
+
+networks:
+  qbittorrent_dev_net:
+    driver: bridge

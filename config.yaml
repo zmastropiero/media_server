@@ -40,6 +40,8 @@ prod:
 docker:
   dev:
     torrent_app:
+      service: "qbittorrent_dev"
+      network: "qbittorrent_dev_net"
       compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent_dev"
@@ -54,6 +56,8 @@ docker:
 
   prod:
     torrent_app:
+      service: "qbittorrent_prod"
+      network: "qbittorrent_prod_net"
       compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent"

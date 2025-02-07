@@ -4,7 +4,7 @@ docker_config = docker_compose_config("torrent_app")
 
 compose_template = f"""version: "3.9"
 services:
-  qbittorrent:
+  {docker_config['service']}:
     platform: linux/arm64
     image: "{docker_config['image']}"
     container_name: "{docker_config['container_name']}"
@@ -29,6 +29,12 @@ services:
     ports:
       - {docker_config['ports'][0]}
     restart: {docker_config.get('restart_policy', 'unless-stopped')}
+    networks:
+      - {docker_config["network"]}
+
+networks:
+  {docker_config["network"]}:
+    driver: bridge
 """
 
 # Save the file
