@@ -12,5 +12,6 @@ __pycache__/
 /.env
 /.vscode/
 torrent_downloader.log
-docker_compose.yaml
+docker-compose.yaml
 ._docker-compose.yml
+._*
