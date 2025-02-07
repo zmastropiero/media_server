@@ -54,7 +54,7 @@ docker:
 
   prod:
     torrent_app:
-      compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
+      compose_path: "/usr/local/srv/dev/scripts/media_server/docker-compose.yml"
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent"
       network_mode: "bridge"
