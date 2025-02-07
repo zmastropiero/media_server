@@ -66,7 +66,7 @@ docker:
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent"
       network_mode: "bridge"
-      data_dir: "/usr/local/srv/media/dropbox"
+      data_dir: "/usr/local/srv/media"
       config_dir: "/usr/local/srv/dev/configs/qbittorrent"
       vpn_enabled: true
       vpn_provider: "PIA"
