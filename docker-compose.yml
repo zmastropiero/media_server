@@ -1,16 +1,16 @@
 version: "3.9"
 services:
-  qbittorrent_dev:
+  qbittorrent_prod:
     platform: linux/arm64
     image: "binhex/arch-qbittorrentvpn"
-    container_name: "qbittorrent_dev"
+    container_name: "qbittorrent"
     cap_add:
       - NET_ADMIN
     environment:
-      - VPN_ENABLED=no
-      
-      
-      
+      - VPN_ENABLED=yes
+      - VPN_USER=p8351264
+      - VPN_PASS=redxim-jaxfug-5rywGu
+      - VPN_PROV=PIA
       - VPN_CLIENT=openvpn
       - LAN_NETWORK=192.168.0.0/24
       - NAME_SERVERS=8.8.8.8
@@ -18,16 +18,16 @@ services:
       - PGID=20
       - ENABLE_PORT_FORWARDING=yes
       - FORWARDED_PORT_FILE=/config/forwarded_port
-      - WEBUI_PORT=8081
+      - WEBUI_PORT=8080
     volumes:
-      - /usr/local/srv/dev/configs/qbittorrent_dev:/config
-      - /usr/local/srv/dev/storage/dropbox:/downloads
+      - /usr/local/srv/dev/configs/qbittorrent:/config
+      - /usr/local/srv/media/dropbox:/downloads
     ports:
-      - 8081:8081
+      - 8080:8080
     restart: unless-stopped
     networks:
-      - qbittorrent_dev_net
+      - qbittorrent_prod_net
 
 networks:
-  qbittorrent_dev_net:
+  qbittorrent_prod_net:
     driver: bridge
