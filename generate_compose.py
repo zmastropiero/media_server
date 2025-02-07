@@ -1,5 +1,3 @@
-import yaml
-import os
 from env_resolver import docker_compose_config
 
 docker_config = docker_compose_config("torrent_app")
@@ -24,6 +22,7 @@ services:
       - PGID={docker_config.get('pgid', '20')}
       - ENABLE_PORT_FORWARDING={"yes" if docker_config.get('enable_port_forwarding', True) else "no"}
       - FORWARDED_PORT_FILE=/config/forwarded_port
+      - WEBUI_PORT={docker_config["port"]}
     volumes:
       - {docker_config['config_dir']}:/config
       - {docker_config['data_dir']}:/downloads

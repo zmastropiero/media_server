@@ -47,6 +47,7 @@ docker:
       data_dir: "/usr/local/srv/dev/storage/dropbox"
       config_dir: "/usr/local/srv/dev/configs/qbittorrent_dev"
       vpn_enabled: false  # No VPN in dev for debugging
+      port: "8081"
       ports:
         - "8081:8081"  # Different port to avoid conflicts
       restart_policy: "unless-stopped"
@@ -63,6 +64,7 @@ docker:
       vpn_provider: "PIA"
       vpn_user: !ENV VPN_USER
       vpn_pass: !ENV VPN_PASS
+      port: "8080"
       ports:
         - "8080:8080"
       restart_policy: "unless-stopped"

@@ -72,6 +72,7 @@ def docker_compose_config(application):
         "network_mode": dockerConfig["network_mode"],
         "data_dir": dockerConfig["data_dir"],
         "config_dir": dockerConfig["config_dir"],
+        "port": dockerConfig["port"],
         "ports": dockerConfig["ports"],
         "restart_policy": dockerConfig["restart_policy"],
         "vpn_enabled": dockerConfig["vpn_enabled"],
