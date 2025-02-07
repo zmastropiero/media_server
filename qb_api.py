@@ -6,7 +6,7 @@ import yaml
 import re
 import file_system
 import logging
-from env_resolver import load_config
+from env_resolver import qbitorrent_config
 
 
 # Configure logging
@@ -146,38 +146,6 @@ def resolve_env_variables(yaml_content):
     return env_pattern.sub(env_replacer, yaml_content)
 
 
-def load_config(config_path="config.yaml"):
-    with open(config_path, "r") as file:
-        yaml_content = file.read()
-
-    # Resolve environment variables in the raw YAML string
-    resolved_yaml = resolve_env_variables(yaml_content)
-
-    # Load YAML with replaced environment variables
-    config = yaml.safe_load(resolved_yaml)
-
-    # Get the active environment
-    env = os.getenv("ENVIRONMENT", "dev")  # Default to "dev" if not set
-    if env not in config:
-        raise ValueError(f"Environment '{env}' not found in config file")
-
-    env_config = {**config.get("base", {}), **config[env]}
-
-    configDict = {
-        "env": env,
-        "torrentFiles": env_config["torrentfiles"],
-        "savePath": env_config["dropbox"],
-        "savePathActual": env_config["dropboxactual"],
-        "qbitorrentHost": env_config["qbitorrent_host"],
-        "qbitorrentUsername": env_config["qbitorrent_username"],
-        "qbitorrentPassword": env_config["qbitorrent_password"],
-        "qbitorrentPort": env_config["qbitorrent_port"],
-        "completedFolder": env_config["completed"],
-        "log": env_config["log"],
-    }
-    return configDict
-
-
 @contextmanager
 def qbtorrent_api_call(host, port, username, password):
     conn_info = {
@@ -206,7 +174,7 @@ def qbtorrent_api_call(host, port, username, password):
 
 
 if __name__ == "__main__":
-    configDict = load_config()
+    configDict = qbitorrent_config()
     with QBittorrentManager(configDict) as qbt_manager:
         if qbt_manager:
 

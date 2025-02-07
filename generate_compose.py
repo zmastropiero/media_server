@@ -26,6 +26,7 @@ services:
     volumes:
       - {docker_config['config_dir']}:/config
       - {docker_config['data_dir']}:/downloads
+    user: "501:20"
     ports:
       - {docker_config['ports'][0]}
     restart: {docker_config.get('restart_policy', 'unless-stopped')}
