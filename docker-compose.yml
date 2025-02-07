@@ -1,16 +1,22 @@
 version: "3.9"
 services:
   qbittorrent:
+    platform: linux/arm64
     image: "binhex/arch-qbittorrentvpn"
     container_name: "qbittorrent_dev"
-    network_mode: "bridge"
+    cap_add:
+      - NET_ADMIN
     environment:
       - VPN_ENABLED=no
-      - VPN_PROV=
-      - VPN_USER=
-      - VPN_PASS=
+      - VPN_CLIENT=openvpn
+      - LAN_NETWORK=192.168.0.0/24
+      - NAME_SERVERS=8.8.8.8
+      - PUID=501
+      - PGID=20
+      - ENABLE_PORT_FORWARDING=yes
+      - FORWARDED_PORT_FILE=/config/forwarded_port
     volumes:
-      - /usr/local/srv/dev/configs/qbittorrent:/config
+      - /usr/local/srv/dev/configs/qbittorrent_dev:/config
       - /usr/local/srv/dev/storage/dropbox:/downloads
     ports:
       - 8081:8080
