@@ -19,7 +19,7 @@ services:
       - LAN_NETWORK={docker_config.get('lan_network', '192.168.0.0/24')}
       - NAME_SERVERS={docker_config.get('name_servers', '8.8.8.8')}
       - PUID={docker_config.get('puid', '501')}
-      - PGID={docker_config.get('pgid', '20')}gi
+      - PGID={docker_config.get('pgid', '20')}
       - ENABLE_PORT_FORWARDING={"yes" if docker_config.get('enable_port_forwarding', True) else "no"}
       - FORWARDED_PORT_FILE=/config/forwarded_port
       - WEBUI_PORT={docker_config["port"]}

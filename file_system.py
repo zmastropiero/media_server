@@ -42,7 +42,7 @@ def move_completed(sourcePath: str, sourcePathActual: str,
     completedPath - location of completed torrent
     category - category in app & folder within completed path to store torrent
     """
-    sourcePath = sourcePath.replace("/downloads/", sourcePathActual)
+    sourcePath = sourcePath.replace("/downloads", sourcePathActual)
     destinationDir = completedPath+"/"+category
     if not os.path.exists(destinationDir):
         logging.warning(f"No folder for category {category}"
@@ -55,7 +55,7 @@ def move_completed(sourcePath: str, sourcePathActual: str,
     if os.path.exists(sourcePath):
         if os.path.isfile(sourcePath):
             try:
-                shutil.copyfileobj(sourcePath, destinationPath, length=16*1024)
+                shutil.copy(sourcePath, destinationPath)  # Correct function for copying files
                 logging.info(f"File {sourcePath} copied successfully"
                              f"to {destinationPath}")
                 return destinationPath
@@ -84,7 +84,7 @@ def tag_checker(tags):
     [0] - If 1 torrent has already been moved to completed folder
     [1] - If 1 torrent is a still hit_and_run
     """
-    tagList = tags.split(',')
+    tagList = tags.split(', ')
     moved = 0
     hit_and_run = 0
     for tag in tagList:

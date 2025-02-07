@@ -3,8 +3,8 @@
 
 # Infinite loop to restart the script if it exits
 while true; do
-    echo "Starting media_server.py..."
-    python3 /Users/kr/Projects/media_server/qb_api.py
-    echo "media_server.py exited. Restarting in 5 seconds..."
-    sleep 30
+    echo "Starting qb_api.py..."
+    python3 qb_api.py
+    echo "qb_api.py exited. Restarting in 6 seconds..."
+    sleep 60
 done

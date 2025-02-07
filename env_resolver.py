@@ -57,6 +57,7 @@ def qbitorrent_config():
         "qbitorrentPort": baseConfig["qbitorrent_port"],
         "completedFolder": baseConfig["completed"],
         "log": baseConfig["log"],
+        "hitAndRunTime": baseConfig["hitAndRunTime"]
     }
     return configDict
 
@@ -90,4 +91,14 @@ def docker_compose_config(application):
     return configDict
 
 
+def log_config():
+    config, env = load_config()
+    baseConfig = {**config.get("base", {}), **config[env]}
+    configDict = {
+        "env": env,
+        "log": baseConfig["log"],
+        "log_level": baseConfig["log_level"],
+    }
+    return configDict
  
+

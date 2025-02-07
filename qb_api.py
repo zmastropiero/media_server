@@ -3,19 +3,28 @@ import qbittorrentapi
 import os
 from contextlib import contextmanager
 import yaml
+import time 
 import re
 import file_system
 import logging
 from env_resolver import qbitorrent_config
+from env_resolver import log_config
 
 
-# Configure logging
+# Load logging configuration
+log_settings = log_config()
+
+# Configure logging dynamically
 logging.basicConfig(
-    filename="torrent_downloader.log",  # Log file name
-    level=logging.DEBUG,  # Log level (INFO, DEBUG, ERROR, etc.)
-    format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
-    datefmt="%Y-%m-%d %H:%M:%S"  # Date format
+    filename=log_settings["log"],  # Dynamically set log file path
+    level=getattr(logging, log_settings["log_level"].upper(), logging.INFO),  # Convert log level to uppercase
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
+
+# Example log message
+logging.info("Logging initialized with level: %s and log file: %s",
+             log_settings["log_level"], log_settings["log"])
 
 
 class QBittorrentManager:
@@ -75,7 +84,7 @@ class QBittorrentManager:
             except Exception as e:
                 logging.error(f"Unexpected error: {e}")
 
-    def current_torrents(self):
+    def current_torrents(self, hitAndRunTime):
         """
         Api call to qbitorrent for details on all torrents in the application
         """
@@ -93,11 +102,11 @@ class QBittorrentManager:
             # Determine status
             status = "not finished" if completion_on == -1 else "finished"
             # Calculate age in days
-            age_in_days = ((completion_on - added_on) / 86400
+            age_in_seconds = ((int(time.time()) - added_on)
                            if completion_on != -1 else 0)
             # Determine hit-and-run status
             hit_and_run = (
-                "yes" if ratio < 1 or age_in_days < 11 else "no"
+                "no" if ratio > 1 or age_in_seconds > hitAndRunTime else "yes"
             )
             # Construct the dictionary for this torrent
             info_payload = {
@@ -106,7 +115,7 @@ class QBittorrentManager:
                 "tags": tags,
                 "path": content_path,
                 "status": status,
-                "age": age_in_days,
+                "age": age_in_seconds,
                 "ratio": ratio,
                 "hitAndrun": hit_and_run,
                 "tags": tags,
@@ -184,7 +193,7 @@ if __name__ == "__main__":
             downloaded_torrents = qbt_manager.download_new_torrents(
                 queue_list, configDict["savePath"])
 
-            currentTorrents = qbt_manager.current_torrents()
+            currentTorrents = qbt_manager.current_torrents(hitAndRunTime=configDict["hitAndRunTime"])
             for torrent in currentTorrents:
                 hash = torrent["hash"]
                 torrentName = torrent["name"]
@@ -236,7 +245,7 @@ if __name__ == "__main__":
                     elif hitAndRunTag == 1:
                         logging.debug(f"{torrentName} is accurately tagged "
                                       f"hit and run")
-                elif hitAndRun == "no":
+                elif hitAndRun == "no" and movedTag == 1:
                     logging.info(f"{torrentName} has fulfilled"
                                  f"seeding requirement")
                     qbt_manager.delete_torrent(

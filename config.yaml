@@ -15,13 +15,15 @@ dev:
   file_server: "/usr/local/srv/dev/storage"
   torrentfiles: "/usr/local/srv/dev/storage/torrentfiles"
   completed: "/usr/local/srv/dev/storage/completed"
-  dropbox: "/usr/local/srv/dev/storage/dropbox"
+  dropbox: "/downloads"
   dropboxactual: "/usr/local/srv/dev/storage/dropbox"
-  log: "/usr/local/srv/dev/logs/torrent_downloader.log"
+  log: "/usr/local/srv/dev/logs/qbitorrent_dev/torrent_downloader.log"
+  log_level: "DEBUG"
   qbitorrent_host: "http://localhost:8081"
   qbitorrent_username: "krandle"
   qbitorrent_password: !ENV QBITORRENT_PASSWORD
   qbitorrent_port: 8081
+  hitAndRunTime: 300
 
 prod:
   user: "kr"
@@ -29,13 +31,15 @@ prod:
   file_server: "/usr/local/srv/dev/scripts"
   torrentfiles: "/usr/local/srv/media/torrentfiles"
   completed: "/usr/local/srv/media/completed"
-  dropbox: "/usr/local/srv/media/dropbox"
+  dropbox: "/downloads"
   dropboxactual: "/usr/local/srv/media/dropbox"
-  log: "/usr/local/srv/dev/logs/torrent_downloader.log"
+  log: "/usr/local/srv/dev/logs/qbitorrent_prod/torrent_downloader.log"
+  log_level: "INFO"
   qbitorrent_host: "http://localhost:8080"
   qbitorrent_username: "krandle"
   qbitorrent_password: !ENV QBITORRENT_PASSWORD
   qbitorrent_port: 8080
+  hitAndRunTime: 950400
 
 docker:
   dev:
