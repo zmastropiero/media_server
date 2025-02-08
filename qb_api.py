@@ -108,6 +108,10 @@ class QBittorrentManager:
             hit_and_run = (
                 "no" if ratio > 1 or age_in_seconds > hitAndRunTime else "yes"
             )
+            # check if file is reseed
+            reseed = (
+                "yes" if category == "reseed" else "no"
+            )
             # Construct the dictionary for this torrent
             info_payload = {
                 "name": name,
@@ -120,6 +124,7 @@ class QBittorrentManager:
                 "hitAndrun": hit_and_run,
                 "tags": tags,
                 "category": category,
+                "reseed": reseed,
             }
             all_torrent_dict.append(info_payload)
 
@@ -202,6 +207,7 @@ if __name__ == "__main__":
                     torrent["tags"])
                 logging.debug(f"This file has a moved value of {movedTag} "
                               f"and a hit and run value of {hitAndRunTag}")
+                movedTag = 1 if torrent["reseed"] == "yes" else movedTag 
 
                 # move completed torrents
                 if torrent["status"] == "finished" and movedTag == 0:
