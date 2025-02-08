@@ -68,26 +68,27 @@ def docker_compose_config(application):
     dockerConfig = config.get("docker", {}).get(env, {}).get(application, {})
     configDict = {
         "env": env,
-        "image": dockerConfig["image"],
-        "container_name": dockerConfig["container_name"],
-        "network_mode": dockerConfig["network_mode"],
-        "data_dir": dockerConfig["data_dir"],
-        "config_dir": dockerConfig["config_dir"],
-        "port": dockerConfig["port"],
-        "ports": dockerConfig["ports"],
-        "restart_policy": dockerConfig["restart_policy"],
-        "vpn_enabled": dockerConfig["vpn_enabled"],
-        "compose_path": dockerConfig["compose_path"],
-        "service": dockerConfig["service"],
-        "network": dockerConfig["network"]
-        # "vpn_provider": dockerConfig["vpn_provider"],
-        # "vpn_user": dockerConfig["vpn_user"],
-        # "vpn_pass": dockerConfig["vpn_pass"],
+        "image": dockerConfig.get("image", ""),
+        "container_name": dockerConfig.get("container_name", ""),
+        "network_mode": dockerConfig.get("network_mode", ""),
+        "data_dir": dockerConfig.get("data_dir", ""),
+        "config_dir": dockerConfig.get("config_dir", ""),
+        "port": dockerConfig.get("port", ""),
+        "ports": dockerConfig.get("ports", ""),
+        "restart_policy": dockerConfig.get("restart_policy", ""),
+        "vpn_enabled": dockerConfig.get("vpn_enabled", ""),
+        "compose_path": dockerConfig.get("compose_path", ""),
+        "service": dockerConfig.get("service", ""),
+        "network": dockerConfig.get("network",""),
+        "volumes": dockerConfig.get("volumes",""),
+        # "vpn_provider": dockerConfig.get("vpn_provider", ""),
+        # "vpn_user": dockerConfig.get("vpn_user", ""),
+        # "vpn_pass": dockerConfig.get("vpn_pass", ""),
     }
     if env=="prod":
-        configDict["vpn_provider"] = dockerConfig["vpn_provider"]
-        configDict["vpn_user"] = dockerConfig["vpn_user"]
-        configDict["vpn_pass"] = dockerConfig["vpn_pass"]
+        configDict["vpn_provider"] = dockerConfig.get("vpn_provider","")
+        configDict["vpn_user"] = dockerConfig.get("vpn_user","")
+        configDict["vpn_pass"] = dockerConfig.get("vpn_pass","")
     return configDict
 
 
@@ -100,5 +101,3 @@ def log_config():
         "log_level": baseConfig["log_level"],
     }
     return configDict
- 
-

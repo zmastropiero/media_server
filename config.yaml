@@ -57,6 +57,20 @@ docker:
       ports:
         - "8081:8081"  # Different port to avoid conflicts
       restart_policy: "unless-stopped"
+    portainer:
+      service: "portainer_dev"
+      network: "qbittorrent_dev_net"
+      compose_path: "/usr/local/srv/dev/projects/media_server/docker-compose.yml"
+      image: "portainer/portainer-ce"
+      container_name: "portainer_dev"
+      network_mode: "bridge"
+      ports:
+        - "9001:9000"
+        - "9444:9443"
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/usr/local/srv/dev/configs/portainer_dev:/data"
+      restart_policy: "unless-stopped"
 
   prod:
     torrent_app:
@@ -72,7 +86,22 @@ docker:
       vpn_provider: "PIA"
       vpn_user: !ENV VPN_USER
       vpn_pass: !ENV VPN_PASS
+      strict_port_forward: "yes"
       port: "8080"
       ports:
         - "8080:8080"
+      restart_policy: "unless-stopped"
+    portainer:
+      service: "portainer_prod"
+      network: "qbittorrent_prod_net"
+      compose_path: "/usr/local/srv/dev/scripts/media_server/docker-compose.yml"
+      image: "portainer/portainer-ce"
+      container_name: "portainer"
+      network_mode: "bridge"
+      ports:
+        - "9000:9000"
+        - "9443:9443"
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/usr/local/srv/dev/configs/portainer:/data"
       restart_policy: "unless-stopped"
