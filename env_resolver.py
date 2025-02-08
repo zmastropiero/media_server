@@ -81,6 +81,7 @@ def docker_compose_config(application):
         "service": dockerConfig.get("service", ""),
         "network": dockerConfig.get("network",""),
         "volumes": dockerConfig.get("volumes",""),
+        "environment": dockerConfig.get("environment",""),
         # "vpn_provider": dockerConfig.get("vpn_provider", ""),
         # "vpn_user": dockerConfig.get("vpn_user", ""),
         # "vpn_pass": dockerConfig.get("vpn_pass", ""),

@@ -2,6 +2,9 @@ from env_resolver import docker_compose_config
 
 qbt_config = docker_compose_config("torrent_app")
 portainer_config = docker_compose_config("portainer")
+nextcloud_config = docker_compose_config("nextcloud")
+nextclouddb_config = docker_compose_config("nextcloud_db")
+redis_config = docker_compose_config("redis")
 
 compose_template = f"""services:
   {qbt_config['service']}:
@@ -42,8 +45,52 @@ compose_template = f"""services:
       - {portainer_config['volumes'][1]}
     networks:
       - {portainer_config["network"]}
+      - {nextcloud_config["network"]}
+  {nextcloud_config['service']}:
+    image: {nextcloud_config["image"]}
+    container_name: "{nextcloud_config['container_name']}"
+    restart: {nextcloud_config.get('restart_policy', 'unless-stopped')}
+    depends_on:
+      - {nextclouddb_config['service']}
+      - {redis_config['service']}
+    networks:
+      - {nextcloud_config["network"]}
+    ports:
+      - {nextcloud_config['ports'][0]}
+    environment:
+      - {nextcloud_config['environment'][0]}   
+      - {nextcloud_config['environment'][1]}  
+      - {nextcloud_config['environment'][2]}    
+    volumes:
+      - {nextcloud_config['volumes'][0]}
+      - {nextcloud_config['volumes'][1]}
+      - {nextcloud_config['volumes'][2]}
+      - {nextcloud_config['volumes'][3]}
+  {nextclouddb_config['service']}:
+    image: {nextclouddb_config["image"]}
+    container_name: "{nextclouddb_config['container_name']}"
+    restart: {nextclouddb_config.get('restart_policy', 'unless-stopped')}  
+    networks: 
+      - {nextclouddb_config["network"]}
+    environment:
+      - {nextclouddb_config['environment'][0]}   
+      - {nextclouddb_config['environment'][1]}  
+      - {nextclouddb_config['environment'][2]}   
+      - {nextclouddb_config['environment'][3]} 
+    volumes:
+      - {nextclouddb_config['volumes'][0]}
+  {redis_config['service']}:
+    image: {redis_config["image"]}
+    container_name: "{redis_config['container_name']}"
+    restart: {redis_config.get('restart_policy', 'unless-stopped')}  
+    networks: 
+      - {redis_config["network"]}
+
+
 networks:
   {qbt_config["network"]}:
+    driver: bridge
+  {nextcloud_config["network"]}:
     driver: bridge
 """
 
