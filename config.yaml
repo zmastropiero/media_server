@@ -182,6 +182,7 @@ docker:
       restart_policy: "unless-stopped"
     redis:
       image: "redis:alpine"
+      servie: "redis"
       container_name: "nextcloud_redis"
       restart_policy: "unless-stopped"
       network: "nextcloud_net"
