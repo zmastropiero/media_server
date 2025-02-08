@@ -83,7 +83,7 @@ docker:
       data_dir: "/usr/local/srv/vol/srv-disk1_14_25/dropbox"
       config_dir: "/usr/local/srv/dev/configs/qbittorrent"
       vpn_enabled: true
-      vpn_provider: "PIA"
+      vpn_provider: "pia"
       vpn_user: !ENV VPN_USER
       vpn_pass: !ENV VPN_PASS
       strict_port_forward: "yes"
