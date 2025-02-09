@@ -130,7 +130,7 @@ docker:
       volumes:
         - /usr/local/srv/dev/jellyfin/config:/config
         - /usr/local/srv/dev/jellyfin/cache:/cache
-        - /usr/local/srv/media:/media
+        - /usr/local/srv/media/completed:/media
       environment:
         - JELLYFIN_PublishedServerUrl=http://192.168.0.69:8096
       ports:
