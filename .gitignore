@@ -15,3 +15,4 @@ torrent_downloader.log
 docker-compose.yml
 ._docker-compose.yml
 ._*
+*.old
