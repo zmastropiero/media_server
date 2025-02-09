@@ -134,4 +134,4 @@ docker:
       environment:
         - JELLYFIN_PublishedServerUrl=http://192.168.0.69:8096
       ports:
-        - "8097:8096"
+        - "8096:8096"
