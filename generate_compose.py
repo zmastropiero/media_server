@@ -1,8 +1,13 @@
 from env_resolver import docker_compose_config
+import json
 
 qbt_config = docker_compose_config("torrent_app")
 portainer_config = docker_compose_config("portainer")
 jellyfin_config = docker_compose_config("jellyfin")
+samba_config = docker_compose_config("samba")
+media_service_config = docker_compose_config("media_services")
+
+print(json.dumps(media_service_config,indent=4))
 
 compose_template = f"""services:
   {qbt_config['service']}:
@@ -55,6 +60,29 @@ compose_template = f"""services:
       - {jellyfin_config["environment"][0]}
     ports:
       - {jellyfin_config['ports'][0]}
+  {samba_config['service']}:
+    cap_add:
+      - CAP_NET_ADMIN
+    image: {samba_config["image"]}
+    container_name: "{samba_config['container_name']}"
+    restart: {samba_config.get('restart_policy', 'unless-stopped')}
+    volumes:
+      - {samba_config['volumes'][0]}
+      - {samba_config['volumes'][1]}
+      - {samba_config['volumes'][2]}
+    environment:
+      - {samba_config["environment"][0]}
+      - {samba_config["environment"][1]}
+      - {samba_config["environment"][2]}
+      - {samba_config["environment"][3]}
+      - {samba_config["environment"][4]}
+      - {samba_config["environment"][5]}
+      - {samba_config["environment"][6]}
+      - {samba_config["environment"][7]}
+      - {samba_config["environment"][8]}
+    ports:
+      - {samba_config['ports'][0]}
+
 
 networks:
   {qbt_config["network"]}:
