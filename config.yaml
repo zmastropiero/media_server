@@ -155,23 +155,23 @@ docker:
       ports:
         - "8096:8096"
     samba:
-      service: "samba_dev"
+      service: "samba"
       image: "servercontainers/samba:latest"
-      container_name: samba_dev
+      container_name: samba
       restart_policy: always
       ports: 
-        - 139:445  # Alternative: use `ports` if needed
+        - 445:445  # Alternative: use `ports` if needed
       environment: 
         - MODEL=Macmini
-        - AVAHI_NAME=MediaServer-Dev
+        - AVAHI_NAME=MediaServer
         - SAMBA_CONF_LOG_LEVEL=3
         - GROUP_media=1500
         - ACCOUNT_kr=1022
         - UID_kr=1000
         - GROUPS_kr=media
-        - SAMBA_VOLUME_CONFIG_dev_media=[srv-media_dev]; path=/mnt/srv_dev/media; valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
-        - SAMBA_VOLUME_CONFIG_dev_srv=[srv_dev]; path=/mnt/srv_dev valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
+        - SAMBA_VOLUME_CONFIG_media=[srv-media]; path=/mnt/srv/media; valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
+        - SAMBA_VOLUME_CONFIG_srv=[srv]; path=/mnt/srv valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
       volumes:
-        - /usr/local/srv:/mnt/srv_dev
-        - /usr/local/srv/media:/mnt/srv_dev/media
+        - /usr/local/srv:/mnt/srv
+        - /usr/local/srv/media:/mnt/srv/media
         - /etc/avahi/services/:/external/avahi
