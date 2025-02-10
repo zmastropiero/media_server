@@ -29,8 +29,9 @@ compose_template = f"""services:
       - STRICT_PORT_FORWARD={"yes" if qbt_config.get('strict_port_forward', True) else "no"}
       - WEBUI_PORT={qbt_config["port"]}
     volumes:
-      - {qbt_config['config_dir']}:/config
-      - {qbt_config['data_dir']}:/downloads
+      - {qbt_config['volumes'][0]}
+      - {qbt_config['volumes'][1]}
+      - {qbt_config['volumes'][2]}
     ports:
       - {qbt_config['ports'][0]}
     restart: {qbt_config.get('restart_policy', 'unless-stopped')}
@@ -48,18 +49,6 @@ compose_template = f"""services:
       - {portainer_config['volumes'][1]}
     networks:
       - {portainer_config["network"]}
-  {jellyfin_config['service']}:
-    image: {jellyfin_config["image"]}
-    container_name: "{jellyfin_config['container_name']}"
-    restart: {jellyfin_config.get('restart_policy', 'unless-stopped')}
-    volumes:
-      - {jellyfin_config['volumes'][0]}
-      - {jellyfin_config['volumes'][1]}
-      - {jellyfin_config['volumes'][2]}
-    environment:
-      - {jellyfin_config["environment"][0]}
-    ports:
-      - {jellyfin_config['ports'][0]}
   {samba_config['service']}:
     cap_add:
       - CAP_NET_ADMIN

@@ -50,9 +50,11 @@ docker:
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent_dev"
       network_mode: "bridge"
-      data_dir: "/usr/local/srv/dev/storage/dropbox"
-      config_dir: "/usr/local/srv/dev/configs/qbittorrent_dev"
       vpn_enabled: false  # No VPN in dev for debugging
+      volumes:
+        - "/usr/local/srv/dev/configs/qbittorrent_dev:/config"
+        - "/usr/local/srv/dev/storage/dropbox:/downloads"
+        - "/usr/local/srv/dev/configs/vuetorrent:/vuetorrent"
       port: "8081"
       ports:
         - "8081:8081"  # Different port to avoid conflicts
@@ -115,13 +117,15 @@ docker:
       image: "binhex/arch-qbittorrentvpn"
       container_name: "qbittorrent"
       network_mode: "bridge"
-      data_dir: "/usr/local/srv/media/dropbox"
-      config_dir: "/usr/local/srv/dev/configs/qbittorrent"
       vpn_enabled: true
       vpn_provider: "pia"
       vpn_user: !ENV VPN_USER
       vpn_pass: !ENV VPN_PASS
       strict_port_forward: "yes"
+      volumes:
+        - "/usr/local/srv/dev/configs/qbittorrent:/config"
+        - "/usr/local/srv/media/dropbox:/downloads"
+        - "/usr/local/srv/dev/configs/vuetorrent:/vuetorrent"
       port: "8080"
       ports:
         - "8080:8080"
