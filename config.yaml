@@ -170,7 +170,7 @@ docker:
         - UID_kr=1000
         - GROUPS_kr=media
         - SAMBA_VOLUME_CONFIG_media=[srv-media]; path=/mnt/srv/media; valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
-        - SAMBA_VOLUME_CONFIG_srv=[srv]; path=/mnt/srv valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
+        - SAMBA_VOLUME_CONFIG_srv=[srv]; path=/mnt/srv; valid users = kr; guest ok = no; read only = no; browseable = yes; follow symlinks =  yes; wide links = yes; allow insecure wide links = yes
       volumes:
         - /usr/local/srv:/mnt/srv
         - /usr/local/srv/media:/mnt/srv/media
